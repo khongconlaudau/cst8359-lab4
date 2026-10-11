@@ -1,0 +1,34 @@
+﻿@model Rsvp
+@{
+    ViewData["Title"] = "RSVP Form";
+}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <h1>Register for a workshop</h1>
+
+        <form asp-controller="Workshops" asp-action="Confirm" method="post"> 
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label">Full name</label>
+                <input asp-for="FullName" class="form-control" required />
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="WorkshopTitle" class="form-label">Workshop</label>
+                <select asp-for="WorkshopTitle" class="form-select" required>
+                    <option value="">-- Select a workshop --</option>
+                    @foreach (var title in (string[])ViewBag.Workshops)
+                            {
+                                <option value="@title">@title</option>    
+                            }
+                </select>
+            </div>
+
+            <div class="form-check mb-4">
+                <input asp-for="NeedsAccommodation" class="form-check-input" />
+                <label asp-for="NeedsAccommodation" class="form-check-label">I need accommodation</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit RSVP</button>
+            <a class="btn btn-link" asp-controller="Workshops" asp-action="Index">Back</a>
+        </form>
+    </div>
+</div>
