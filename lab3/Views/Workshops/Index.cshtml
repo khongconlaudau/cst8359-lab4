@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Workshops"; 
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h1 class="display-5">Workshop RSVP</h1>
+        <p class="lead">
+            Sign up for a workshop. Enter your name, choose a workshop, and say whether you need accommodation.
+        </p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+            <a class="btn btn-primary" asp-controller="Workshops" asp-action="RsvpForm">Register</a>
+            <a class="btn btn-outline-secondary" asp-controller="Workshops" asp-action="Registrations">View registrations</a>
+        </div>
+    </div>
+</div>

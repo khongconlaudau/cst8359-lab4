@@ -1,0 +1,22 @@
+﻿@model Rsvp
+@{
+    ViewData["Title"] = "Confirmation";
+}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="alert alert-success" role="alert">
+            @ViewData["Message"]
+        </div>
+        <h1>Your registration</h1>
+        <dl class="row">
+            <dt class="col-sm-5">Full name</dt>
+            <dd class="col-sm-7">@Model.FullName</dd>
+            <dt class="col-sm-5">Workshop</dt>
+            <dd class="col-sm-7">@Model.WorkshopTitle</dd>
+            <dt class="col-sm-5">Needs accommodation</dt>
+            <dd class="col-sm-7">@(Model.NeedsAccommodation ? "Yes" : "No")</dd>
+        </dl>
+        <a class="btn btn-primary" asp-controller="Workshops" asp-action="Registrations">See all registrations</a>
+        <a class="btn btn-outline-secondary" asp-controller="Workshops" asp-action="RsvpForm">Register another</a>
+    </div>
+</div>
