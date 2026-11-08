@@ -1,11 +1,17 @@
-﻿using lab3.Models;
+using lab3.Data;
+using lab3.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lab3.Controllers
 {
     public class WorkshopsController : Controller
     {
-        private static readonly List<Rsvp> RegistrationsList = new List<Rsvp>();
+        private readonly ApplicationDbContext _context;
+
+        public WorkshopsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         public static readonly string[] WorkshopTitles =
         {
@@ -13,7 +19,6 @@ namespace lab3.Controllers
             "EF Core Intro",
             "Razor Essentials"
         };
-
 
         public IActionResult Index()
         {
@@ -27,18 +32,17 @@ namespace lab3.Controllers
             return View(new Rsvp());
         }
 
-
         [HttpPost]
         public IActionResult Confirm(Rsvp model)
         {
-            RegistrationsList.Add(model);
             ViewData["Message"] = $"Thanks for registering, {model.FullName}!";
             return View(model);
         }
 
-        public IActionResult Registrations() 
+        public IActionResult Registrations()
         {
-            return View(RegistrationsList);
+            var registrations = _context.Rsvps.ToList();
+            return View(registrations);
         }
     }
 }
