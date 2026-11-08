@@ -1,0 +1,15 @@
+﻿using lab3.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace lab3.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : base(options)
+        {
+        }
+
+        public DbSet<Rsvp> Rsvps { get; set; }
+    }
+}
