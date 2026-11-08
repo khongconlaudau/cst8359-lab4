@@ -1,4 +1,4 @@
-﻿using lab3.Models;
+using lab3.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lab3.Controllers
